@@ -10,7 +10,8 @@ export class CardsController {
     }
 
     @Get(':uuid')
-    async findOneWithUUID(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
+    // better use static class of pipe, to save memory
+    async findOneWithUUID(@Param('uuid', new ParseUUIDPipe() ) uuid: string) {
         return this.cardsService.findOne(uuid);
     }
 }
